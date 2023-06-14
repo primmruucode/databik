@@ -35,13 +35,14 @@ jobs:
 
       - name: Databricks CLI config
         run: |
-            pip install databricks-cli==0.11.0 
+            pip install databricks-cli 
             cat > ~/.databrickscfg << EOF 
             [DEFAULT] 
             host = ${{ secrets.DATABRICKS_HOST_URL }} 
             token = ${{ secrets.DATABRICKS_TOKEN }} 
             jobs-api-version = 2.1 
-            EOF
+            EOF 
+    
       - name: Deploy code to databricks workspace
         run: |
             databricks workspace import ${{ inputs.service_code_file }} ${{ inputs.databricks_code_path }} --language python --overwrite
