@@ -32,19 +32,13 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.9
-
-      - name: Databricks CLI config
-        id: config
-        run: |
-            pip install databricks-cli==0.11.0 
-            cat > ~/.databrickscfg << EOF 
-            [DEFAULT] 
-            host = ${{ secrets.DATABRICKS_HOST_URL }} 
-            token = ${{ secrets.DATABRICKS_TOKEN }} 
-            jobs-api-version = 2.1 
-            EOF 
-    
-      - name: Deploy code to databricks workspace
-        if: steps.config.outcome == 'success'
-        run: |
-            databricks workspace import ${{ inputs.service_code_file }} ${{ inputs.databricks_code_path }} --language python --overwrite
+      - name: Release notebooks
+        uses: databrickslabs/action-notebook-tools@main
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_URL }} 
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        with:
+          source_directory: ${{ inputs.service_code_file }}
+          target_directory: ${{ inputs.databricks_code_path }}
+          overwrite: true
+     
