@@ -36,7 +36,7 @@ jobs:
       - name: Databricks CLI config
         id: config
         run: |
-            pip install databricks-cli 
+            pip install databricks-cli==0.11.0 
             cat > ~/.databrickscfg << EOF 
             [DEFAULT] 
             host = ${{ secrets.DATABRICKS_HOST_URL }} 
