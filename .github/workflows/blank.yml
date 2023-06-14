@@ -32,13 +32,29 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.9
-      - name: Release notebooks
-        uses: databrickslabs/action-notebook-tools@main
-        env:
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_URL }} 
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          
+      - name: Trigger notebook in staging
+        uses: databricks/run-notebook@v0
         with:
-          source_directory: ${{ inputs.service_code_file }}
-          target_directory: ${{ inputs.databricks_code_path }}
-          overwrite: true
+          databricks-host: ${{ secrets.DATABRICKS_HOST_URL }}
+          databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
+          local-notebook-path: ${{ inputs.service_code_file }}
+          # The cluster JSON below is for AWS workspaces. On Azure and GCP, set
+          # node_type_id to an appropriate node type, e.g. "Standard_D3_v2" for
+          # Azure or "n1-highmem-4" for GCP
+          new-cluster-json: >
+            {
+              "num_workers": 1,
+              "spark_version": "11.3.x-scala2.12",
+              "node_type_id": "asia-east1-b"
+            }
+          # Grant users in the "devops" group view permission on the
+          # notebook results
+          access-control-list-json: >
+            [
+              {
+                "group_name": "users",
+                "permission_level": "CAN_VIEW"
+              }
+            ]
      
