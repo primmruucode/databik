@@ -10,6 +10,6 @@ jobs:
     with:
       databricks_code_path: "databricks"
       service_code_file: "src/code/pipeline.py"
-    secrets:
-      DATABRICKS_HOST_URL: ${{ secrets.MY_DATABRICKS_HOST }}
-      DATABRICKS_TOKEN: ${{ secrets.MY_DATABRICKS_TOKEN }}
+    #secrets:
+      #DATABRICKS_HOST_URL: ${{ secrets.MY_DATABRICKS_HOST }}
+      #DATABRICKS_TOKEN: ${{ secrets.MY_DATABRICKS_TOKEN }}
