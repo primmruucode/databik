@@ -41,7 +41,7 @@ jobs:
             host = ${{ secrets.DATABRICKS_HOST_URL }} 
             token = ${{ secrets.DATABRICKS_TOKEN }} 
             jobs-api-version = 2.1 
-            EOF 
+            EOF
     
       - name: Deploy code to databricks workspace
         run: |
