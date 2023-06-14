@@ -6,7 +6,7 @@ on:
 jobs:
   deploy_code:
     name: Deploy my Great Databricks Pipeline to production
-    uses: ./blank.yml
+    uses: ./.github/workflows/blank.yml
     with:
       databricks_code_path: "databricks"
       service_code_file: "src/code/pipeline.py"
