@@ -8,7 +8,7 @@ jobs:
     name: Deploy my Great Databricks Pipeline to production
     uses: ./.github/workflows/blank.yml
     with:
-      databricks_code_path: "databricks/mucode"
+      databricks_code_path: "datacommit/mucode"
       service_code_file: "src/code/pipeline.py"
     #secrets:
       #DATABRICKS_HOST_URL: ${{ secrets.MY_DATABRICKS_HOST }}
