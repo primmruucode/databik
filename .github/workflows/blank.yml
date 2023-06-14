@@ -34,6 +34,7 @@ jobs:
           python-version: 3.9
 
       - name: Databricks CLI config
+        id: config
         run: |
             pip install databricks-cli 
             cat > ~/.databrickscfg << EOF 
@@ -44,5 +45,6 @@ jobs:
             EOF 
     
       - name: Deploy code to databricks workspace
+        if: steps.config.outcome == 'success'
         run: |
             databricks workspace import ${{ inputs.service_code_file }} ${{ inputs.databricks_code_path }} --language python --overwrite
