@@ -1,6 +1,6 @@
 name: Notebook Deployment - Databricks
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       databricks_code_path:
         description: Databricks Service Path
@@ -10,13 +10,6 @@ on:
         description: python code file path
         type: string
         required: true
-  secrets:
-    DATABRICKS_HOST_URL:
-      description:   'Databricks workspace URL'
-      required: true
-    DATABRICKS_TOKEN:
-      description: 'Access token for Databricks CLI'
-      required: true
 jobs:
   push_to_db:
     runs-on: ubuntu-latest
