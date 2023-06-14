@@ -1,0 +1,15 @@
+name: CD for my pipeline :)
+on: 
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  deploy_code:
+    name: Deploy my Great Databricks Pipeline to production
+    uses: .github/workflows/blank.yml@v1.0.0
+    with:
+      databricks_code_path: "Pipelines/prod/my_great_pipeline"
+      service_code_file: "src/code/pipeline.py"
+    secrets:
+      DATABRICKS_HOST_URL: ${{ secrets.MY_DATABRICKS_HOST }}
+      DATABRICKS_TOKEN: ${{ secrets.MY_DATABRICKS_TOKEN }}
