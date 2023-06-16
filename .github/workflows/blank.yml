@@ -11,6 +11,8 @@ on:
         description: python code file path
         type: string
         required: true
+env:
+  DATABRICKS_HOST: https://8197127835171069.9.gcp.databricks.com    
     
   #secrets:
     #DATABRICKS_HOST_URL:
