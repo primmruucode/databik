@@ -13,7 +13,7 @@ on:
         required: true
 env:
   DATABRICKS_HOST: https://8197127835171069.9.gcp.databricks.com
-  DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+  DATABRICKS_TOKEN: dapi42fa2c27081b82922256499d58269033
     
   #secrets:
     #DATABRICKS_HOST_URL:
