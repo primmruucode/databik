@@ -37,7 +37,7 @@ jobs:
           python-version: 3.9
           
       - name: Trigger notebook in staging
-        uses: databricks/run-notebook@v0
+        uses: databricks/run-notebook@v0.0.3
         with:
           databricks-host: ${{ secrets.DATABRICKS_HOST_URL }}
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
