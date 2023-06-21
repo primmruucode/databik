@@ -9,7 +9,7 @@ jobs:
     uses: ./.github/workflows/blank.yml
     with:
       databricks_code_path: "datacommit/mucode"
-      service_code_file: "src/code/pipeline.py"
+      service_code_file: "src/code/pipeline.ipynb"
     #secrets:
       #DATABRICKS_HOST_URL: ${{ secrets.MY_DATABRICKS_HOST }}
       #DATABRICKS_TOKEN: ${{ secrets.MY_DATABRICKS_TOKEN }}
