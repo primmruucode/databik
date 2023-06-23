@@ -45,11 +45,12 @@ jobs:
           # The cluster JSON below is for AWS workspaces. On Azure and GCP, set
           # node_type_id to an appropriate node type, e.g. "Standard_D3_v2" for
           # Azure or "n1-highmem-4" for GCP
+          git-commit: ${{ github.event.head.sha }}
           new-cluster-json: >
             {
               "num_workers": 1,
               "spark_version": "11.3.x-scala2.12",
-              "node_type_id": "a2-highgpu-1g"
+              "node_type_id": "n1-highmem-4"
             }
           # Grant users in the "devops" group view permission on the
           # notebook results
