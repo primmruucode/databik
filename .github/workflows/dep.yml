@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   deploy_code:
-    name: Deploy my Great Databricks Pipeline to production
+    name: Deploy my Databricks Pipeline
     uses: ./.github/workflows/pushdb.yml
     with:
       databricks_code_path: "/datacommit/mucode"
