@@ -24,7 +24,7 @@ env:
       #required: true
 
 jobs:
-  push_to_db:
+  run_temp_nb:
     runs-on: ubuntu-latest
     
     steps:
