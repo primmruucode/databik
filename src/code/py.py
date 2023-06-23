@@ -1,10 +1,10 @@
 import pandas as pd
-import gcsfs
 
 # Set up GCS credentials (replace with your own GCS credentials)
 gcs_project_id = 'totemic-carrier-389808'
 gcs_bucket_name = 'databricket'
 
+print(gcs_project_id)
 # Create a GCS filesystem object
 fs = gcsfs.GCSFileSystem(project=gcs_project_id)
 
