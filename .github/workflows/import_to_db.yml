@@ -1,1 +1,26 @@
+name: Notebook Deployment - Databricks
+on:
+  workflow_call:
+    inputs:
+      databricks_code_path:
+        description: Databricks Service Path
+        type: string
+        required: true
+      
+      service_code_file:
+        description: python code file path
+        type: string
+        required: true
+env:
+  DATABRICKS_HOST: https://8197127835171069.9.gcp.databricks.com
+  DATABRICKS_TOKEN: dapi42fa2c27081b82922256499d58269033
+    
+  #secrets:
+    #DATABRICKS_HOST_URL:
+      #description:   'Databricks workspace URL'
+      #required: true
+    #DATABRICKS_TOKEN:
+      #description: 'Access token for Databricks CLI'
+      #required: true
 
+jobs:
