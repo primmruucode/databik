@@ -1,8 +1,6 @@
-import pandas as pd
+spark.conf.get("spark.databricks.clusterUsageTags.clusterName")
 
-# Set up GCS credentials (replace with your own GCS credentials)
-gcs_project_id = 'totemic-carrier-389808'
-gcs_bucket_name = 'databricket'
+spark.conf.get("spark.databricks.clusterUsageTags.clusterId")
 
 print(gcs_project_id)
 # Create a GCS filesystem object
