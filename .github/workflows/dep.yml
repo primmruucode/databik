@@ -8,7 +8,7 @@ jobs:
     name: Deploy my Databricks Pipeline
     uses: ./.github/workflows/pushdb.yml
     with:
-      databricks_code_path: "/datacommit/mucode"
+      databricks_code_path: "/imported/mucode"
       service_code_file: "src/code/pipeline.ipynb"
     #secrets:
       #DATABRICKS_HOST_URL: ${{ secrets.MY_DATABRICKS_HOST }}
