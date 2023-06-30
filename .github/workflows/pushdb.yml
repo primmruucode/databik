@@ -78,7 +78,15 @@ jobs:
             jobs-api-version = 2.1 
             EOF 
     
-      - name: Deploy code to databricks workspace
+      - name: Import code file to databricks workspace
         run: |
             databricks workspace import src/code/py.py ${{ inputs.databricks_code_path }} --language python --overwrite
+     
+      - name: Import config file to databricks workspace
+        run: |
+            databricks workspace import_dir etl/config /Users/user1/etl/config
+     
+      - name: Copy the libraries from github repo to DBFS
+        run: |
+            databricks fs cp etl-2.1-assembly.jar dbfs:/user1/etl/etl-2.1-assembly.jar
      
