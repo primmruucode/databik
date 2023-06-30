@@ -46,15 +46,15 @@ jobs:
           # node_type_id to an appropriate node type, e.g. "Standard_D3_v2" for
           # Azure or "n1-highmem-4" for GCP
           #  git-commit: ${{ github.event.head.sha }}
-          existing-cluster-id: 0621-225508-8s781rm9
-          #new-cluster-json: >
-           # {
-             # "num_workers": 1,
-             # "spark_version": "11.3.x-scala2.12",
-            #  "node_type_id": "n1-highmem-4"
-           # }
-          # Grant users in the "devops" group view permission on the
-          # notebook results
+          #existing-cluster-id: 0621-225508-8s781rm9
+          new-cluster-json: >
+            {
+              "num_workers": 1,
+              "spark_version": "11.3.x-scala2.12",
+              "node_type_id": "n1-highmem-4"
+            }
+         #  Grant users in the "devops" group view permission on the
+        # notebook results
           
   push_to_dbs:
       runs-on: ubuntu-latest
