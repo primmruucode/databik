@@ -1,1 +1,57 @@
+name: Notebook Deployment - Databricks
+on:
+  workflow_call:
+    inputs:
+      databricks_code_path:
+        description: Databricks Service Path
+        type: string
+        required: true
+      
+      service_code_file:
+        description: python code file path
+        type: string
+        required: true
+env:
+  DATABRICKS_HOST: https://8197127835171069.9.gcp.databricks.com
+  DATABRICKS_TOKEN: dapi42fa2c27081b82922256499d58269033
+    
+  #secrets:
+    #DATABRICKS_HOST_URL:
+      #description:   'Databricks workspace URL'
+      #required: true
+    #DATABRICKS_TOKEN:
+      #description: 'Access token for Databricks CLI'
+      #required: true
 
+jobs:
+  run_temp_nb:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout current repository
+        uses: actions/checkout@v3.3.0
+      
+      - name: Set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+          
+      - name: Trigger notebook in staging
+        uses: databricks/run-notebook@v0.0.3
+        with:
+          databricks-host: ${{ secrets.DATABRICKS_HOST_URL }}
+          databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
+          local-notebook-path: ${{ inputs.service_code_file }}
+          # The cluster JSON below is for AWS workspaces. On Azure and GCP, set
+          # node_type_id to an appropriate node type, e.g. "Standard_D3_v2" for
+          # Azure or "n1-highmem-4" for GCP
+          #  git-commit: ${{ github.event.head.sha }}
+          existing-cluster-id: 0621-225508-8s781rm9
+          #new-cluster-json: >
+           # {
+             # "num_workers": 1,
+             # "spark_version": "11.3.x-scala2.12",
+            #  "node_type_id": "n1-highmem-4"
+           # }
+          # Grant users in the "devops" group view permission on the
+          # notebook results
